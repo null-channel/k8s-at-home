@@ -1,8 +1,4 @@
-## commands:
-`$ kubeadm init --control-plane-endpoint control-plane.null`
-
-NOTE: don't need pod cider as network is a 10. and not a 192.168. and calico uses the 192.168.
-NOTE: setting a DNS entry instead of a IP is more flexable
+# Home kubernetes install steps
 
 ## Installing docker:
 
@@ -49,6 +45,13 @@ EOF
 
 `apt-get update && apt-get install -y kubelet kubeadm kubectl`
 
+
+## Install kubernetes with k8s
+`$ kubeadm init --control-plane-endpoint control-plane.null`
+
+NOTE: don't need pod cider as network is a 10. and not a 192.168. and calico uses the 192.168.
+NOTE: setting a DNS entry instead of a IP is more flexable
+
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -59,8 +62,7 @@ NOTE: protect it with your life. it has the master admin key to your cluster!
 
 ## Calico install
 ```
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+kubectl apply -f calico.yaml
 ```
 
 
